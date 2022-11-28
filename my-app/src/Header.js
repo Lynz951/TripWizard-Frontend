@@ -22,40 +22,46 @@ import mobileImage from './mobileImage.png'
 
 export default function App() {
   const [showBasic, setShowBasic] = useState(false);
-  const imageUrl = useWindowWidth() >= 650 ? desktopImage : mobileImage;
+  const imageUrl = useWindowWidth() >= 715 ? desktopImage : mobileImage;
 
   return (
     <header>
-      <MDBNavbar expand='lg' light bgColor='white'>
+     <MDBNavbar expand='lg' light bgColor='white'>
+     <MDBNavbarItem active>
+                <MDBNavbarLink aria-current='page' href='#'>
+                <img src={logo} alt="Logo" className="logo"/>
+                </MDBNavbarLink>
+              </MDBNavbarItem>
         <MDBContainer fluid>
           <MDBNavbarToggler
+            onClick={() => setShowBasic(!showBasic)}
             aria-controls='navbarExample01'
             aria-expanded='false'
             aria-label='Toggle navigation'
           >
             <MDBIcon fas icon='bars' />
           </MDBNavbarToggler>
-          <MDBCollapse show={showBasic}>
-            <MDBNavbarNav right className='mb-2 mb-lg-0'>
-              <MDBNavbarItem active>
-                <img src={logo} alt="Logo" className="logo"/>
-                <MDBNavbarLink aria-current='page' href='#'>
-                  Home
-                </MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Features</MDBNavbarLink>
-              </MDBNavbarItem>
-              <MDBNavbarItem>
-                <MDBNavbarLink href='#'>Pricing</MDBNavbarLink>
-              </MDBNavbarItem>
+
+          <MDBCollapse navbar show={showBasic}>
+            <MDBNavbarNav className='justify-content-end mb-20 mb-lg-0'>
+             
               <MDBNavbarItem>
                 <MDBNavbarLink href='#'>About</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='#'>Support</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='#'>Join</MDBNavbarLink>
+              </MDBNavbarItem>
+              <MDBNavbarItem>
+                <MDBNavbarLink href='#'>Members</MDBNavbarLink>
               </MDBNavbarItem>
             </MDBNavbarNav>
           </MDBCollapse>
         </MDBContainer>
       </MDBNavbar>
+
 
       <div
         id='intro-example'
@@ -63,8 +69,7 @@ export default function App() {
       
           <div className='d-flex justify-content-center align-items-center h-100'>
             <div className='text-black'>
-              {/* <h1 className='mb-3'>Trip Wizard</h1> */}
-              <h5 className='mb-4'>The <b>best</b> way to organize <br /> and share group trip plans!</h5>
+           
               <MDBBtn
                 className="m-2"
                 tag="a"
