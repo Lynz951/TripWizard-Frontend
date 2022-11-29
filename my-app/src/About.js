@@ -13,7 +13,6 @@ export default function About() {
           <Card.Header>About Trip Wizard</Card.Header>
           <Card.Body>
             <Card.Text>
-            <br />
                 <div className='textIndent1'>
                 Trip Wizard was born when developer, Lindsay Haddix, had a major problem.
                 </div>
@@ -26,7 +25,7 @@ export default function About() {
                 TripWizard is a place where a group travelling together can store their plans easily. Plans include flights, hotel reservations, activities, and just about anything else you can come up with! They can then view their itinerary in an easy to read and understand format. Sharing your plans and itinerary with group members is fast and can be done with the push of a button! Once you have created a profile you can create a trip and add plans to it throughout your planning process. Trips are saved even after you've taken them so that all of your plans are available forever. We hope this makes planning your group trip super easy and you are encouraged to do more!
                 </div>
             </Card.Text>
-            <Button variant="primary">Go somewhere</Button>
+            <Button variant="primary">Join Now!</Button>
           </Card.Body>
           {/* <Card.Footer className="text-muted">2 days ago</Card.Footer> */}
         </Card>

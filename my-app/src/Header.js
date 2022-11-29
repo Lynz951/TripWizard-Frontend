@@ -14,7 +14,7 @@ import {
   MDBDropdownMenu,
   MDBDropdownToggle,
   MDBDropdownItem,
-  MDBBtn,
+  // MDBBtn,
 } from 'mdb-react-ui-kit';
 import './App.css'
 import logo from './logo.png'
@@ -22,7 +22,6 @@ import { XCircleFill } from 'react-bootstrap-icons'
 import desktopImage from './Travellersonvanwithwords.png'
 import mobileImage from './mobileImage.png'
 import 'bootstrap/dist/css/bootstrap.css'
-
 
 
 export default function Header() {
@@ -88,7 +87,7 @@ export default function Header() {
                 Create Trip
               </MDBNavbarLink>
             </MDBNavbarItem>
-            <MDBNavbarItem>
+            {/* <MDBNavbarItem>
               <MDBDropdown>
                 <MDBDropdownToggle tag='a' className='nav-link'>
                   Dropdown
@@ -99,12 +98,12 @@ export default function Header() {
                   <MDBDropdownItem link>Something else here</MDBDropdownItem>
                 </MDBDropdownMenu>
               </MDBDropdown>
-            </MDBNavbarItem>
-            <MDBNavbarItem>
+            </MDBNavbarItem> */}
+            {/* <MDBNavbarItem>
               <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
                 Disabled
               </MDBNavbarLink>
-            </MDBNavbarItem>
+            </MDBNavbarItem> */}
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
@@ -178,11 +177,13 @@ export default function Header() {
         </div>
       )}
 
+      
+{/* IMAGE */}
       <div
         id='intro-example'
         className='p-5 text-center bg-image' style={{backgroundImage: `url(${imageUrl})` }}>
       
-          <div className='d-flex justify-content-center align-items-center h-100'>
+          {/* <div className='d-flex justify-content-center align-items-center h-100'>
             <div className='text-black'>
            
               <MDBBtn
@@ -217,7 +218,7 @@ export default function Header() {
                 Sign In
               </MDBBtn>
             </div>
-          </div>
+          </div> */}
       </div>
 
   </header>

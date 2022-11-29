@@ -8,7 +8,6 @@
 /* Default height for small devices */
 #intro-example {
   height: 600px;
-  /* background-image: url("Travellersonvanwithwords.png"); */
 }
 
 /* Height for devices larger than 992px */
@@ -78,4 +77,9 @@ body.active-modal {
   top: 10px;
   right: 10px;
   padding: 5px 7px;
+}
+
+#tripbutton1 {
+  height: 50px;
+  
 }
