@@ -1,8 +1,8 @@
 
 
 .logo {
-  height: 150px;
-  width: 175px;
+  height: 75px;
+  width: 75px;
 }
 
 /* Default height for small devices */
@@ -16,4 +16,19 @@
   #intro-example {
     height: 800px;
   }
+}
+
+.textIndent1 
+{
+    text-indent: 30px;
+}
+
+.textIndent2 
+{
+    text-indent: 30px;
+}
+
+.textIndent3 
+{
+    text-indent: 30px;
 }

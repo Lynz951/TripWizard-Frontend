@@ -20,7 +20,7 @@ import mobileImage from './mobileImage.png'
 
 
 
-export default function App() {
+export default function Header() {
   const [showBasic, setShowBasic] = useState(false);
   const imageUrl = useWindowWidth() >= 715 ? desktopImage : mobileImage;
 
@@ -34,6 +34,7 @@ export default function App() {
               </MDBNavbarItem>
         <MDBContainer fluid>
           <MDBNavbarToggler
+            classname='ms-auto'
             onClick={() => setShowBasic(!showBasic)}
             aria-controls='navbarExample01'
             aria-expanded='false'
@@ -89,7 +90,7 @@ export default function App() {
                 target="_blank"
                 href='https://mdbootstrap.com/docs/standard/'
               >
-                Create Account
+                Join Trip Wizard
               </MDBBtn>
               <MDBBtn
                 className="m-2"
