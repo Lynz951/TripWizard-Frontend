@@ -4,7 +4,6 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import Header from './Header'
 import About from './About'
-import UserPage from './MyTripsPage'
 import axios from 'axios'
 import UserPageHeader from './UserPageHeader'
 
@@ -36,10 +35,10 @@ function App() {
     <div className="App">
       {(page === 'home') && 
       <>
-      <Header addTrip={addTrip}/>
+      <Header />
       <About />
       </>}
-      {(page === 'nothome') && <UserPageHeader />}
+      {(page === 'nothome') && <UserPageHeader addTrip={addTrip}/>}
         <button onClick={() => setPage('nothome')}>Click for User Page</button>
         <button onClick={() => setPage('home')}>Go to Home</button>
       

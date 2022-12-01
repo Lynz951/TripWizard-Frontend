@@ -23,13 +23,29 @@ import mobileImage from './mobileImage.png'
 import 'bootstrap/dist/css/bootstrap.css'
 
 
-export default function UserPageHeader() {
+export default function UserPageHeader({addTrip}) {
+
 
   const [showNavRight, setShowNavRight] = useState(false);
-  const [login, setLogin] = useState(false);
-  const [trip, setTrip] = useState(false);
-  const imageUrl = useWindowWidth() >= 715 ? desktopImage : mobileImage;
+  const [tripModal, toggleTripModal] = useState(false);
 
+  const [tripInfo, setTripInfo] = useState({
+    name: "",
+    start_date: "",
+    end_date: "",
+    description: "",
+  });
+  const handleChange = (event) => {
+    setTripInfo({...tripInfo, [event.target.name]: event.target.value });
+  };
+  
+  const handleSubmit= (event) => {
+    event.preventDefault();
+    console.log(tripInfo);
+    addTrip(tripInfo);
+    setTripInfo({ name: "", start_date: "", end_date: "", description: ""});
+  };
+  
 //   Change to logout
 //   function toggleLogin() {
 //     setLogin(!login);
@@ -41,15 +57,16 @@ export default function UserPageHeader() {
 //         document.body.classList.remove('active-modal') 
 //     }
 
-  function toggleTrip() {
-    setTrip(!trip);
-    }
 
-    if(trip) {
-      document.body.classList.add('active-modal')
-    } else {
-        document.body.classList.remove('active-modal') 
-    }
+    function toggleTrip() {
+      toggleTripModal(!tripModal);
+      }
+  
+      if(tripModal) {
+        document.body.classList.add('active-modal')
+      } else {
+          document.body.classList.remove('active-modal') 
+      }
 
   return (
     <header>
@@ -76,75 +93,64 @@ export default function UserPageHeader() {
                 Home
               </MDBNavbarLink>
             </MDBNavbarItem>
-
-    {/* Change to logout */}
-            {/* <MDBNavbarItem>
-              <MDBNavbarLink href='#' onClick={toggleLogin}>
-                Login
-              </MDBNavbarLink>
-            </MDBNavbarItem> */}
-
             <MDBNavbarItem>
               <MDBNavbarLink href='#' onClick={toggleTrip}>
                 Create New Trip
               </MDBNavbarLink>
             </MDBNavbarItem>
-
-            {/* <MDBNavbarItem>
-              <MDBDropdown>
-                <MDBDropdownToggle tag='a' className='nav-link'>
-                  Dropdown
-                </MDBDropdownToggle>
-                <MDBDropdownMenu>
-                  <MDBDropdownItem link>Action</MDBDropdownItem>
-                  <MDBDropdownItem link>Another action</MDBDropdownItem>
-                  <MDBDropdownItem link>Something else here</MDBDropdownItem>
-                </MDBDropdownMenu>
-              </MDBDropdown>
-            </MDBNavbarItem> */}
-            {/* <MDBNavbarItem>
-              <MDBNavbarLink disabled href='#' tabIndex={-1} aria-disabled='true'>
-                Disabled
-              </MDBNavbarLink>
-            </MDBNavbarItem> */}
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
 
-
-      {trip && (
+    {tripModal && (
         <div className="modal">
-          <div onClick={toggleLogin} className="overlay"></div>
+          <div onClick={toggleTrip} className="overlay"></div>
           <div className="modal-content">
             <h2>Create Trip</h2>
             <form>
                 <div className="row mb-3">
                     <label className="col-sm-2 col-form-label">Trip Name</label>
                     <div className="col-sm-10">
-                        <input type="text" className="form-control" id="tripName"/>
+                        <input type="text" 
+                                name="name" 
+                                placeholder="tripName"
+                                value={tripInfo.name} onChange={handleChange}
+                                />
                     </div>
                 </div>
                 <div className="row mb-3">
                     <label className="col-sm-2 col-form-label">Start Date</label>
                     <div className="col-sm-10">
-                        <input type="date" className="form-control" id="startDate"/>
+                        <input type="date" 
+                                name="start_date" 
+                                placeholder="Start Date"
+                                value={tripInfo.start_date} onChange={handleChange}
+                                />
                     </div>
                 </div>
                 <div className="row mb-3">
                     <label className="col-sm-2 col-form-label">End Date</label>
                     <div className="col-sm-10">
-                        <input type="date" className="form-control" id="endDate"/>
+                        <input type="date" 
+                                name="end_date" 
+                                id="End Date"
+                                value={tripInfo.end_date} onChange={handleChange}
+                                />
                     </div>
                 </div>
                 <div className="row mb-3">
                     <label className="col-sm-2 col-form-label">Description</label>
                     <div className="col-sm-10">
-                        <input type="text" className="form-control" id="tripDescription"/>
+                        <input type="text" 
+                              name="description" 
+                              id="Trip Description"
+                              value={tripInfo.description} onChange={handleChange}/>
+                              
                     </div>
                 </div>
                 
-                <button type="submit" className="btn btn-primary">Save Trip</button>
+                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save Trip</button>
             </form>
             <h2 className="close-modal" onClick={toggleTrip}>
             <XCircleFill></XCircleFill>

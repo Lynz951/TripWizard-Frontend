@@ -24,29 +24,12 @@ import mobileImage from './mobileImage.png'
 import 'bootstrap/dist/css/bootstrap.css'
 
 
-export default function Header({addTrip}) {
+export default function Header() {
 
   const [showNavRight, setShowNavRight] = useState(false);
   const imageUrl = useWindowWidth() >= 715 ? desktopImage : mobileImage;
   const [login, setLogin] = useState(false);
-  const [tripModal, toggleTripModal] = useState(false);
-  const [tripInfo, setTripInfo] = useState({
-    name: "",
-    start_date: "",
-    end_date: "",
-    description: "",
-  });
-  const handleChange = (event) => {
-    setTripInfo({...tripInfo, [event.target.name]: event.target.value });
-  };
-  
-  const handleSubmit= (event) => {
-    event.preventDefault();
-    console.log(tripInfo);
-    addTrip(tripInfo);
-    setTripInfo({ name: "", start_date: "", end_date: "", description: ""});
-  };
-  
+
 
   function toggleLogin() {
     setLogin(!login);
@@ -58,15 +41,6 @@ export default function Header({addTrip}) {
         document.body.classList.remove('active-modal') 
     }
 
-  function toggleTrip() {
-    toggleTripModal(!tripModal);
-    }
-
-    if(tripModal) {
-      document.body.classList.add('active-modal')
-    } else {
-        document.body.classList.remove('active-modal') 
-    }
 
   return (
     <header>
@@ -98,73 +72,13 @@ export default function Header({addTrip}) {
                 Login
               </MDBNavbarLink>
             </MDBNavbarItem>
-
-            <MDBNavbarItem>
-              <MDBNavbarLink href='#' onClick={toggleTrip}>
-                Create New Trip
-              </MDBNavbarLink>
-            </MDBNavbarItem>
           </MDBNavbarNav>
         </MDBCollapse>
       </MDBContainer>
     </MDBNavbar>
 
 
-    {tripModal && (
-        <div className="modal">
-          <div onClick={toggleTrip} className="overlay"></div>
-          <div className="modal-content">
-            <h2>Create Trip</h2>
-            <form>
-                <div className="row mb-3">
-                    <label className="col-sm-2 col-form-label">Trip Name</label>
-                    <div className="col-sm-10">
-                        <input type="text" 
-                                name="name" 
-                                placeholder="tripName"
-                                value={tripInfo.name} onChange={handleChange}
-                                />
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <label className="col-sm-2 col-form-label">Start Date</label>
-                    <div className="col-sm-10">
-                        <input type="date" 
-                                name="start_date" 
-                                placeholder="Start Date"
-                                value={tripInfo.start_date} onChange={handleChange}
-                                />
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <label className="col-sm-2 col-form-label">End Date</label>
-                    <div className="col-sm-10">
-                        <input type="date" 
-                                name="end_date" 
-                                id="End Date"
-                                value={tripInfo.end_date} onChange={handleChange}
-                                />
-                    </div>
-                </div>
-                <div className="row mb-3">
-                    <label className="col-sm-2 col-form-label">Description</label>
-                    <div className="col-sm-10">
-                        <input type="text" 
-                              name="description" 
-                              id="Trip Description"
-                              value={tripInfo.description} onChange={handleChange}/>
-                              
-                    </div>
-                </div>
-                
-                <button type="submit" className="btn btn-primary" onClick={handleSubmit}>Save Trip</button>
-            </form>
-            <h2 className="close-modal" onClick={toggleTrip}>
-            <XCircleFill></XCircleFill>
-            </h2>
-          </div>
-        </div>
-      )}
+
 
       {login && (
         <div className="modal">
