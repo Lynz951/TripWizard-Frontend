@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 import sunsetLA from './sunsetLA.jpg';
 
 
-export default function MyTrips() {
+export default function TripPage() {
 
     const [data, setData] = useState([])
   
@@ -24,14 +24,16 @@ export default function MyTrips() {
             return null
         }
 
-        const MyTrips = data.map(trip => 
+        const Trip = data.map(trip => 
             (
-                <>
-                <div className='mytrips' style={{display: 'flex', justifyContent: 'center'}}>
-                
+            <>
+            <div style={{display: 'flex', justifyContent: 'center'}}>
+                <div><h1>{trip.name}</h1>
+                        </div>
+            </div>
+            <div className='tripcard' style={{display: 'flex', justifyContent: 'center'}}>
                 {/* <button><img  id='tripbutton1' src={tripbutton1} alt="my image" onClick={myfunciton}></img></button> */}
-                
-                <Card style={{ width: '18rem', display: 'flex', justifyContent: 'center'}}>
+                <Card style={{ width: '50rem' }}>
                     <Card.Img variant="top" src={sunsetLA} />
                     <Card.Body>
                         <Card.Title>{trip.name}</Card.Title>
@@ -40,24 +42,19 @@ export default function MyTrips() {
                             <h6>End Date:{trip.end_date}</h6>
                             {trip.description}
                         </Card.Text>
-                        <Button variant="primary">Go To Trip Page</Button>
+                        <Button variant="primary">Edit Trip</Button>
+                        <Button variant="primary">Delete Trip</Button>
+                        <Button variant="primary">Share Trip</Button>
                     </Card.Body>
                 </Card>
-            </div>   
-            </>   
+            </div>  
+            </>    
             )
         )
 
     return(
         <>
-        <div style={{display: 'flex', justifyContent: 'center'}}>
-            <div><h1>My Trips</h1></div>      
-        </div>
-        {MyTrips}
+        {Trip}
         </>
     )
 }
-
-
-
-

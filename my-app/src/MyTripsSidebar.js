@@ -1,10 +1,16 @@
 import SidebarMenu from 'react-bootstrap-sidebar-menu';
+import 'App.css'
+
+import * as mdb from 'mdb-ui-kit'; // lib
+import { Input } from 'mdb-ui-kit'; // module 
 
 function MyTripsSidebar() {
+
     return (
         <SidebarMenu>
 
         <SidebarMenu.Header>
+            <h1>Options</h1>
             <SidebarMenu.Brand>
             {/* Your brand icon */}
             </SidebarMenu.Brand>
@@ -48,3 +54,5 @@ function MyTripsSidebar() {
  );
 }
     export default MyTripsSidebar;
+
+    
