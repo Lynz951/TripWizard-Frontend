@@ -6,6 +6,7 @@ import Header from './Header'
 import About from './About'
 import axios from 'axios'
 import UserPageHeader from './UserPageHeader'
+import MyTrips from './MyTripsPage'
 
 function App() {
   const[ page, setPage ] = useState('home')
@@ -32,13 +33,19 @@ function App() {
   console.log(trips)
 
   return (
+
     <div className="App">
       {(page === 'home') && 
       <>
       <Header />
       <About />
       </>}
-      {(page === 'nothome') && <UserPageHeader addTrip={addTrip}/>}
+     
+      {(page === 'nothome') && 
+      <>
+      <UserPageHeader addTrip={addTrip}/>
+      <MyTrips />
+      </>}
         <button onClick={() => setPage('nothome')}>Click for User Page</button>
         <button onClick={() => setPage('home')}>Go to Home</button>
       
